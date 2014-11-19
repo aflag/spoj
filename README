@@ -2,3 +2,8 @@ spoj
 ====
 
 My solutions for spoj problems :-)
+
+* Summary of set up
+
+    `mkvirtualenv measure`
+    `pip install -r test_requirements.txt`
