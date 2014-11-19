@@ -5,7 +5,7 @@ My solutions for spoj problems :-)
 
 * Summary of set up
 
-.. code-block:: shell
+.. code-block:: sh
 
     mkvirtualenv measure
     pip install -r test_requirements.txt
