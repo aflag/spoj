@@ -2,3 +2,8 @@ spoj
 ====
 
 My solutions for spoj problems :-)
+
+
+.. image:: https://travis-ci.org/globocom/measure.svg?branch=master
+   :target: https://travis-ci.org/globocom/measure
+   :alt: Build Status
