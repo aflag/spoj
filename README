@@ -6,6 +6,5 @@ My solutions for spoj problems :-)
 * Summary of set up
 
 .. highlight: shell
-
     mkvirtualenv measure
     pip install -r test_requirements.txt
