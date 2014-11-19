@@ -48,14 +48,6 @@ class Palin {
     }
 
     public String nextPalin(String number) {
-        if (number.length() <= 1) {
-            int n = Integer.valueOf(number) + 1;
-            if (n < 10)
-                return Integer.toString(n);
-            else
-                return "11";
-        }
-
         StringBuilder sb = new StringBuilder(number);
 
         if (firstHalfLessThanOrEqualToSecondHalf(sb)) {
