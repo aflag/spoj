@@ -1,4 +1,3 @@
-// This file doesn't pass PALIN test case :( I'm still trying to figure out why
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -49,8 +48,13 @@ class Palin {
     }
 
     public String nextPalin(String number) {
-        if (number.length() <= 1)
-            return number;
+        if (number.length() <= 1) {
+            int n = Integer.valueOf(number) + 1;
+            if (n < 10)
+                return Integer.toString(n);
+            else
+                return "11";
+        }
 
         StringBuilder sb = new StringBuilder(number);
 
@@ -71,7 +75,7 @@ class Palin {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
  
-        int tests = Integer.valueOf(input.readLine());
+        int tests = Integer.valueOf(input.readLine().trim());
         Palin p = new Palin();
         for (int i = 0; i < tests; ++i) {
             String number = input.readLine().trim();
