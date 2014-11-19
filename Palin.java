@@ -1,10 +1,12 @@
 // This file doesn't pass PALIN test case :( I'm still trying to figure out why
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 
-public class Palin {
+class Palin {
     private int findFirstNotNine(StringBuilder sb, int idx) {
         while (idx >= 0) {
             if (sb.charAt(idx) < '9') {
@@ -66,13 +68,17 @@ public class Palin {
     }
 
     public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
  
-        int tests = Integer.valueOf(br.readLine());
+        int tests = Integer.valueOf(input.readLine());
         Palin p = new Palin();
         for (int i = 0; i < tests; ++i) {
-            String number = br.readLine();
-            System.out.println(p.nextPalin(number));
+            String number = input.readLine().trim();
+            output.write(p.nextPalin(number).trim());
+            output.newLine();
         }
+        output.flush();
+        output.close();
     }
 }
