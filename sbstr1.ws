@@ -8,9 +8,8 @@ Read-10-chars({push  1
 }{push  5 	 	
 }{call
  	3:read(11,5) 		
-}){Push  1 	
-}{Call
- 	4:startswith	  
+}){Call
+ 	8:LookSubstr	   
 }{end
 
 
@@ -19,13 +18,35 @@ Read-10-chars({push  1
 }{Push  1 	
 }{Label
   9:loop	  	
-}{Call
+}{Dup 
+ }{Push  7 			
+}{Sub	  	}{JumpIfZero
+	 10:notfound	 	 
+}{Dup 
+ }{Call
  	4:startswith	  
 }{Swap 
 	}{Push  1 	
-}{Add	   }{Dup 
- }{Swap 
-	}{Label
+}{Add	   }{Swap 
+	}{JumpIfZero
+	 9:loop	  	
+}{Push  1 	
+}{PrintNum	
+ 	}{Push  10 	 	 
+}{PrintChar	
+  }{Return
+	
+}{Label
+  10:notfound	 	 
+}{Pop 
+
+}{Push  0  
+}{PrintNum	
+ 	}{Push  10 	 	 
+}{PrintChar	
+  }{Return
+	
+}**********END-OF-8:LookSubstr**********{Label
   **********FUNCTON:3:read*********** 		
 }{Dup 
  }{push  0  
