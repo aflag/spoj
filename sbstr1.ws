@@ -1,4 +1,7 @@
-Read-10-chars({push  1 	
+{Push  -24			   
+}{Label
+  11:loop	 		
+}Read-10-chars({push  1 	
 }{push  10 	 	 
 }{call
  	3:read(1,10) 		
@@ -10,6 +13,12 @@ Read-10-chars({push  1
  	3:read(11,5) 		
 }){Call
  	8:LookSubstr	   
+}{Push  20 		   
+}{ReadChar	
+	 }{Push  1 	
+}{Add	   }{Dup 
+ }{JumpIfNeg
+		11:loop	 		
 }{end
 
 
@@ -30,6 +39,8 @@ Read-10-chars({push  1
 }{Add	   }{Swap 
 	}{JumpIfZero
 	 9:loop	  	
+}{Pop 
+
 }{Push  1 	
 }{PrintNum	
  	}{Push  10 	 	 
