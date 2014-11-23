@@ -1,29 +1,29 @@
 {Push  -24			   
 }{Label
   11:loop	 		
-}Read-10-chars({push  1 	
-}{push  10 	 	 
-}{call
+}Read-10-chars({Push  1 	
+}{Push  10 	 	 
+}{Call
  	3:read(1,10) 		
-})Read-WS({push  0  
+})Read-WS({Push  0  
 }{ReadChar	
-	 })Read-5-chars({push  11 	 		
-}{push  5 	 	
-}{call
+	 })Read-5-chars({Push  11 	 		
+}{Push  5 	 	
+}{Call
  	3:read(11,5) 		
 }){Call
- 	8:LookSubstr	   
+ 	8:lookSubstr	   
 }{Push  20 		   
 }{ReadChar	
 	 }{Push  1 	
 }{Add	   }{Dup 
  }{JumpIfNeg
 		11:loop	 		
-}{end
+}{End
 
 
 }{Label
-  **********FUNCTION:8:LookSubstr**********	   
+  **********FUNCTION:8:lookSubstr**********	   
 }{Push  1 	
 }{Label
   9:loop	  	
@@ -57,22 +57,22 @@
 }{PrintChar	
   }{Return
 	
-}**********END-OF-8:LookSubstr**********{Label
+}**********END-OF-8:lookSubstr**********{Label
   **********FUNCTON:3:read*********** 		
 }{Dup 
- }{push  0  
-}{swap 
-	}{store		 }{Add	   }Loop10({Label
+ }{Push  0  
+}{Swap 
+	}{Store		 }{Add	   }Loop10({Label
   2:loop 	 
 }{Dup 
  }{push  0  
-}{Retrieve			}{sub	  	}{ReadChar	
-	 }{call
+}{Retrieve			}{Sub	  	}{ReadChar	
+	 }{Call
  	1:dec(mem=0)  	
-}{push  0  
-}{Retrieve			}{push  -1		
-}{mult	  
-}{jumpifneg
+}{Push  0  
+}{Retrieve			}{Push  -1		
+}{Mult	  
+}{JumpIfNeg
 		2:loop 	 
 }{Pop 
 
