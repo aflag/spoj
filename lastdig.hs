@@ -15,4 +15,3 @@ main = do
     n <- getLine
     rest <- getContents
     mapM_ putStrLn $ map (show . uncurry g) $ numbers n rest 
-    return ()
