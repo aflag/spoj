@@ -1,5 +1,3 @@
-(use-modules (srfi srfi-1))
-
 (define (read-line)
   (let
     ((s ""))
