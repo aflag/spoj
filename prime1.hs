@@ -21,12 +21,15 @@ showPrimesBetween [a, b] = concat $ map showLn $ primesBetween a b
 divisible :: Integer -> Integer -> Bool
 divisible a b = a `mod` b == 0
 
+isPrime 1 = False
 isPrime 2 = True
+isPrime 3 = True
+isPrime 4 = False
+isPrime 5 = True
 isPrime n = not $ any (n`divisible`) $ takeWhile (<=limit) primes
   where limit = ceiling $ sqrt $ fromIntegral n
 
 primesBetween :: Integer -> Integer -> [Integer]
-primesBetween 1 b = primesBetween 2 b
 primesBetween a b = filter isPrime [a..b]
 
 primes :: [Integer]
