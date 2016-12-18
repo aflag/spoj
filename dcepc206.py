@@ -63,13 +63,14 @@ class BinaryTree:
         while True:
             if current.value == v:
                 current.replicas += 1
-                return current
+                return current._sum + s
             elif current.value < v:
+                s += (current.value*current.replicas) + current._sum
                 if current.right is None:
                     node = BinaryTree(v)
                     node.parent = current
                     current.right = node
-                    return node
+                    return s
                 else:
                     current = current.right
             else:
@@ -78,18 +79,17 @@ class BinaryTree:
                     node = BinaryTree(v)
                     node.parent = current
                     current.left = node
-                    return node
+                    return s
                 else:
                     current = current.left
 
 
 def solve(stair):
     tree = BinaryTree(stair.pop(0))
-    notes = []
+    total = 0
     for step in stair:
-        elem = tree.insert(step)
-        notes.append(elem.sum)
-    return sum(notes)
+        total += tree.insert(step)
+    return total
 
 
 def main():
