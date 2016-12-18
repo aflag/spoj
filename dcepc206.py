@@ -29,8 +29,6 @@
 
 # All numbers will be between 0 and 10^6.
 
-import sys
-
 class BinaryTree:
 
     def __init__(self, v):
@@ -65,48 +63,31 @@ class BinaryTree:
         while True:
             if current.value == v:
                 current.replicas += 1
-                break
+                return current
             elif current.value < v:
                 if current.right is None:
-                    tree = BinaryTree(v)
-                    tree.parent = current
-                    current.right = tree
-                    break
+                    node = BinaryTree(v)
+                    node.parent = current
+                    current.right = node
+                    return node
                 else:
                     current = current.right
             else:
                 current._sum += v
                 if current.left is None:
-                    tree = BinaryTree(v)
-                    tree.parent = current
-                    current.left = tree
-                    break
+                    node = BinaryTree(v)
+                    node.parent = current
+                    current.left = node
+                    return node
                 else:
                     current = current.left
-
-    def find(self, v):
-        current = self
-        while True:
-            if current.value == v:
-                return current
-            elif current.value < v:
-                if current.right is not None:
-                    current = current.right
-                else:
-                    return None
-            else:
-                if current.left is not None:
-                    current = current.left
-                else:
-                    return None
 
 
 def solve(stair):
     tree = BinaryTree(stair.pop(0))
     notes = []
     for step in stair:
-        tree.insert(step)
-        elem = tree.find(step)
+        elem = tree.insert(step)
         notes.append(elem.sum)
     return sum(notes)
 
