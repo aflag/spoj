@@ -38,6 +38,7 @@ class BinaryTree:
         self.right = None
         self.parent = None
         self.value = v
+        self.replicas = 1
         self._sum = 0
 
     def __repr__(self):
@@ -55,7 +56,7 @@ class BinaryTree:
                 return total
             parent = current.parent
             if parent.value < self.value:
-                total += parent.value + parent._sum
+                total += (parent.value*parent.replicas) + parent._sum
             current = current.parent
 
     def insert(self, v):
@@ -63,6 +64,7 @@ class BinaryTree:
         s = 0
         while True:
             if current.value == v:
+                current.replicas += 1
                 break
             elif current.value < v:
                 if current.right is None:
@@ -105,7 +107,6 @@ def solve(stair):
     for step in stair:
         tree.insert(step)
         elem = tree.find(step)
-        #print(step, elem.sum, tree)
         notes.append(elem.sum)
     return sum(notes)
 
