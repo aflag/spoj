@@ -36,34 +36,47 @@ class BinaryTree:
     def __init__(self, v):
         self.left = None
         self.right = None
+        self.parent = None
         self.value = v
-        self.sum = 0
+        self._sum = 0
 
     def __repr__(self):
         return str(self)
 
     def __str__(self):
-        return "[{} {}] ({}) ({})".format(self.value, self.sum, self.left, self.right)
+        return "[{} {} {}] ({}) ({})".format(self.value, self._sum, self.sum, self.left, self.right)
+
+    @property
+    def sum(self):
+        total = self._sum
+        current = self
+        while True:
+            if current.parent is None:
+                return total
+            parent = current.parent
+            if parent.value < self.value:
+                total += parent.value + parent._sum
+            current = current.parent
 
     def insert(self, v):
         current = self
-        tree = BinaryTree(v)
         s = 0
         while True:
             if current.value == v:
                 break
             elif current.value < v:
-                if current.right == None:
-                    tree.sum += current.sum + current.value
+                if current.right is None:
+                    tree = BinaryTree(v)
+                    tree.parent = current
                     current.right = tree
                     break
                 else:
-                    s += current.sum + current.value
                     current = current.right
             else:
-                current.sum += v
-                if current.left == None:
-                    tree.sum = s
+                current._sum += v
+                if current.left is None:
+                    tree = BinaryTree(v)
+                    tree.parent = current
                     current.left = tree
                     break
                 else:
@@ -75,12 +88,12 @@ class BinaryTree:
             if current.value == v:
                 return current
             elif current.value < v:
-                if current.right != None:
+                if current.right is not None:
                     current = current.right
                 else:
                     return None
             else:
-                if current.left != None:
+                if current.left is not None:
                     current = current.left
                 else:
                     return None
